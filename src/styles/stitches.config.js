@@ -1,39 +1,35 @@
-import { createStitches } from '@stitches/react';
+// src/styles/stitches.config.js
+import { createStitches } from "@stitches/react";
 
-export const {
-  styled,
-  css,
-  globalCss,
-  theme
-} = createStitches({
+export const { styled, css } = createStitches({
   theme: {
     colors: {
-      background: '#18181b',
-      surface: '#23232b',
-      accent: '#5eead4',
-      primary: '#38bdf8',
-      text: '#e2e8f0',
-      muted: '#64748b',
-      danger: '#ef4444',
-      done: '#22c55e'
+      background: "#18181b",
+      surface: "#232329",
+      primary: "#22d3ee",
+      accent: "#a78bfa",
+      text: "#f1f5f9",
+      muted: "#4b5563",
+      danger: "#ef4444"
     },
     space: {
-      xs: '8px',
-      sm: '16px',
-      md: '24px',
-      lg: '32px'
+      xs: "6px",
+      sm: "12px",
+      md: "24px",
+      lg: "48px"
     },
     radii: {
-      sm: '6px',
-      md: '12px'
+      sm: "8px",
+      md: "18px",
+      lg: "36px"
+    },
+    fontSizes: {
+      base: "18px",
+      lg: "26px",
+      xl: "38px"
+    },
+    shadows: {
+      glass: "0 8px 32px 0 rgba(31, 38, 135, 0.15)"
     }
-  }
-});
-export const globalStyles = globalCss({
-  'body': {
-    margin: 0,
-    backgroundColor: '$background',
-    color: '$text',
-    fontFamily: 'Inter, sans-serif'
   }
 });

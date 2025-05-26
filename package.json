@@ -10,7 +10,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@fontsource/inter": "^5.2.5",
     "@stitches/react": "^1.2.8",
+    "framer-motion": "^12.12.2",
     "react": "^19.1.0",
     "react-dom": "^19.1.0"
   },

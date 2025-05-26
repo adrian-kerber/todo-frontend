@@ -2,23 +2,25 @@ import { useEffect, useState } from "react";
 import { styled } from "./styles/stitches.config";
 import { getDias, createDia, deleteDia } from "./api/api";
 import { DiaDetalhe } from "./pages/diadetalhe";
+import { motion, AnimatePresence } from "framer-motion";
 
 const Container = styled("div", {
-  maxWidth: 480,
+  maxWidth: 640,
   margin: "0 auto",
-  padding: "$md"
+  padding: "40px 16px 0 16px"
 });
-const DiaCard = styled("div", {
+const DiaCard = styled(motion.div, {
   background: "$surface",
-  padding: "$sm",
+  boxShadow: "$glass",
+  padding: "$md",
   borderRadius: "$md",
-  marginBottom: "$sm",
+  marginBottom: "$md",
   display: "flex",
   alignItems: "center",
   justifyContent: "space-between",
   cursor: "pointer",
   transition: "background 0.2s",
-  "&:hover": { background: "$primary" }
+  "&:hover": { background: "$accent" }
 });
 const AddDiaInput = styled("input", {
   background: "$surface",
@@ -26,17 +28,22 @@ const AddDiaInput = styled("input", {
   padding: "$xs",
   border: "1px solid $muted",
   borderRadius: "$sm",
-  width: "calc(100% - 32px)",
-  marginRight: "$xs"
+  width: "100%",
+  marginRight: "$xs",
+  fontSize: "18px"
 });
 const Button = styled("button", {
-  background: "$accent",
+  background: "$primary",
   color: "#18181b",
   border: "none",
-  borderRadius: "$sm",
-  padding: "$xs $sm",
+  borderRadius: "$md",
+  padding: "$xs $md",
   cursor: "pointer",
-  fontWeight: "bold"
+  fontWeight: "bold",
+  marginLeft: 4,
+  fontSize: "16px",
+  boxShadow: "0 2px 8px #22d3ee33",
+  transition: "background .18"
 });
 
 export function App() {
