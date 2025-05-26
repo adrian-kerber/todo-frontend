@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { styled } from "./styles/stitches.config";
 import { getDias, createDia, deleteDia } from "./api/api";
-import { DiaDetalhe } from "./pages/DiaDetalhe";
+import { DiaDetalhe } from "./pages/diadetalhe";
 
 const Container = styled("div", {
   maxWidth: 480,
