@@ -7,6 +7,13 @@ import {
 } from "../api/api";
 import { motion, AnimatePresence } from "framer-motion";
 
+// UTILIDADE PARA EVITAR BUG DE TIMEZONE
+function toInputDateString(date) {
+  if (!date) return "";
+  if (typeof date === "string" && date.length >= 10) return date.slice(0, 10);
+  return new Date(date).toISOString().slice(0, 10);
+}
+
 const Container = styled("div", {
   maxWidth: 540,
   margin: "0 auto",
@@ -173,7 +180,13 @@ export function DiaDetalhe({ dia, onBack }) {
     await loadTarefas(tarefa.secao_id);
   }
   async function handleUpdateDia() {
-    await updateDia(dia.id, { data: diaData, titulo: diaTitulo, emoji: diaEmoji, capa_url: dia.capa_url });
+    // AQUI ENVIA A DATA NO PADRÃO "YYYY-MM-DDT12:00:00Z"
+    await updateDia(dia.id, {
+      data: `${diaData}T12:00:00Z`,
+      titulo: diaTitulo,
+      emoji: diaEmoji,
+      capa_url: dia.capa_url
+    });
     setEditDia(false);
   }
 
@@ -185,14 +198,21 @@ export function DiaDetalhe({ dia, onBack }) {
           <div>
             <Editable style={{ width: 44, fontSize: 28 }} type="text" maxLength={2} value={diaEmoji} onChange={e => setDiaEmoji(e.target.value)} />
             <Editable type="text" value={diaTitulo} onChange={e => setDiaTitulo(e.target.value)} />
-            <Editable type="date" style={{ fontSize: 18 }} value={diaData} onChange={e => setDiaData(e.target.value)} />
+            <Editable
+              type="date"
+              style={{ fontSize: 18 }}
+              value={toInputDateString(diaData)}
+              onChange={e => setDiaData(e.target.value)}
+            />
             <Button onClick={handleUpdateDia}>Salvar</Button>
             <Button onClick={() => setEditDia(false)} style={{ background: "#444" }}>Cancelar</Button>
           </div>
         ) : (
           <span style={{ cursor: "pointer", fontSize: 28, fontWeight: 700 }} onClick={() => setEditDia(true)}>
             <span style={{ fontSize: 32 }}>{diaEmoji}</span> {diaTitulo}{" "}
-            <span style={{ color: "#aaa", fontSize: 18 }}>{new Date(diaData).toLocaleDateString("pt-BR")}</span>
+            <span style={{ color: "#aaa", fontSize: 18 }}>
+              {new Date(diaData).toLocaleDateString("pt-BR")}
+            </span>
             <span style={{ marginLeft: 10, fontSize: 18, color: "#38bdf8" }}>✏️</span>
           </span>
         )}
