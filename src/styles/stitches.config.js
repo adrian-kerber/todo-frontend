@@ -1,7 +1,7 @@
 // src/styles/stitches.config.js
 import { createStitches } from "@stitches/react";
 
-export const { styled, css } = createStitches({
+export const { styled, css, globalCss } = createStitches({
   theme: {
     colors: {
       background: "#18181b",
@@ -32,4 +32,16 @@ export const { styled, css } = createStitches({
       glass: "0 8px 32px 0 rgba(31, 38, 135, 0.15)"
     }
   }
+});
+export const globalStyles = globalCss({
+  body: {
+    background: "#18181b",
+    color: "#f1f5f9",
+    fontFamily: "Inter, Arial, sans-serif",
+    margin: 0,
+    minHeight: "100vh",
+  },
+  "*": {
+    boxSizing: "border-box",
+  },
 });
