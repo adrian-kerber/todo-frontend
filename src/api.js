@@ -1,4 +1,4 @@
-const BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:4000";
+const BASE_URL = import.meta.env.VITE_API_URL || "https://todo-backend-nwuf.onrender.com";
 
 // Dias
 export const getDias = () => fetch(`${BASE_URL}/dias`).then(res => res.json());
