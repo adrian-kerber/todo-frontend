@@ -6,8 +6,8 @@ export const { styled, css, globalCss } = createStitches({
     colors: {
       background: "#18181b",
       surface: "#232329",
-      primary: "#22d3ee",
-      accent: "#a78bfa",
+      primary: "#a78bfa",    // agora roxo forte
+      accent: "#8b5cf6",     // roxo escuro, ou escolha seu favorito
       text: "#f1f5f9",
       muted: "#4b5563",
       danger: "#ef4444"
